@@ -1,0 +1,101 @@
+// VARIABLE DECLARATIONS
+:root {
+	--body-bg: none;
+}
+
+// COMMON UTILITIES
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+$overflowValues: auto, scroll, hidden;
+$overflowDirections: x, y;
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+		// Border Thickness
+		@each $size, $length in $spacers {
+			.border#{$infix}-#{$size} {
+				border-width: $length !important;
+			}
+		}
+
+		// Backdrops
+		.backdrop#{$infix}-blur {
+			backdrop-filter: blur(8px);
+			-webkit-backdrop-filter: blur(8px);
+			-moz-backdrop-filter: blur(8px);
+			-o-backdrop-filter: blur(8px);
+		}
+
+		// Overflows
+		@each $value in $overflowValues {
+			@each $dir in $overflowDirections {
+				.overflow-#{$dir}#{$infix}-#{$value} {
+					overflow-#{$dir}: $value;
+				}
+			}
+		}
+	}
+}
+
+
+/* CUSTOM SCROLLER START */
+.custom-scrollbar {
+	/* Width */
+	&::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+	}
+	
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		background: rgb(125, 125, 125);
+		opacity: 0.75;
+		border-radius: 10px;
+	}
+
+	/* Handle on hover */
+	&::-webkit-scrollbar-thumb:hover {
+		background: rgb(100, 100, 100);
+		opacity: 0.5;
+	}
+
+	/* For all */
+	&.all * {
+		@extend .custom-scrollbar;
+	}
+}
+/* CUSTOM SCROLLER END */
+
+/* BODY BACKGROUND START */
+body {
+	background-image: var(--body-bg);
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+/* BODY BACKGROUND END */
+
+.required {
+	content: "*";
+	color: var(--danger);
+
+	&, &.after {
+		margin-right: 5px;
+	}
+
+	&.before {
+		margin-left: 5px;
+	}
+}
+
+textarea.not-resizable {
+	resize: none!important;
+}

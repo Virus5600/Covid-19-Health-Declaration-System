@@ -1,0 +1,1 @@
+window.Inputmask = require('inputmask');

@@ -1,0 +1,63 @@
+/* ANIMATION CONTROLLERS */
+[data-inview-anim] {
+	visibility: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	/* ANIMATIONS - SLIDES */
+	@keyframes slideInLeft {
+		from {
+			opacity: 0;
+			transform: translateX(-6.25%);
+			-o-transform: translateX(-6.25%);
+			-ms-transform: translateX(-6.25%);
+			-moz-transform: translateX(-6.25%);
+			-webkit-transform: translateX(-6.25%);
+		}
+
+		to {
+			opacity: 1;
+			transform: translateX(0%);
+			-o-transform: translateX(0%);
+			-ms-transform: translateX(0%);
+			-moz-transform: translateX(0%);
+			-webkit-transform: translateX(0%);
+		}
+	}
+
+	@keyframes slideInRight {
+		from {
+			opacity: .25;
+			transform: translateX(6.25%);
+			-o-transform: translateX(6.25%);
+			-ms-transform: translateX(6.25%);
+			-moz-transform: translateX(6.25%);
+			-webkit-transform: translateX(6.25%);
+		}
+
+		to {
+			opacity: 1;
+			transform: translateX(0%);
+			-o-transform: translateX(0%);
+			-ms-transform: translateX(0%);
+			-moz-transform: translateX(0%);
+			-webkit-transform: translateX(0%);
+		}
+	}
+
+	.slide-in-left {
+		-webkit-animation: 1s cubic-bezier(0.5, 1, 0.5, 1) slideInLeft;
+		-moz-animation: 1s cubic-bezier(0.5, 1, 0.5, 1) slideInLeft;
+		-ms-animation: 1s cubic-bezier(0.5, 1, 0.5, 1) slideInLeft;
+		-o-animation: 1s cubic-bezier(0.5, 1, 0.5, 1) slideInLeft;
+		animation: 1s cubic-bezier(0.5, 1, 0.5, 1) slideInLeft;
+	}
+
+	.slide-in-right {
+		-webkit-animation: 1s cubic-bezier(0.5, 1, 0.5, 1) slideInRight;
+		-moz-animation: 1s cubic-bezier(0.5, 1, 0.5, 1) slideInRight;
+		-ms-animation: 1s cubic-bezier(0.5, 1, 0.5, 1) slideInRight;
+		-o-animation: 1s cubic-bezier(0.5, 1, 0.5, 1) slideInRight;
+		animation: 1s cubic-bezier(0.5, 1, 0.5, 1) slideInRight;
+	}
+}
