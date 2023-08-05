@@ -34,6 +34,13 @@ mix.webpackConfig({
 	// Module Assets - SASS
 	.sass('resources/scss/modules/animations.scss', 'public/css/modules')
 
+	// Utility Assets - JS
+	.js('resources/js/util/disable-on-submit.js', 'public/js/util')
+
+	// Individual Pages
+	.js('resources/js/login.js', 'public/js')
+	.sass('resources/scss/login.scss', 'public/css')
+
 	// Final Configurations
 	.sourceMaps()
 	.disableNotifications();

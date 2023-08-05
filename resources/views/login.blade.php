@@ -2,13 +2,16 @@
 
 @section('title', 'Login')
 
-@section('content')
+@section("css")
+<link rel="stylesheet" type="text/css" href="{{ mix("css/login.css") }}">
+@endsection
 
+@section('content')
 @php
-$hasErrors = $errors->has("email") || $errors->has("password");
+$hasErrors = session()->has("flash_error");
 @endphp
 
-<form class="form card w-100 w-sm-75 w-md-50 w-lg-25 mx-auto">
+<form action="{{ route("authenticate") }}" method="POST" class="form card w-100 w-sm-75 w-md-50 w-lg-25 mx-auto needs-validation" enctype="multipart/form-data" novalidate>
 	<h3 class="card-header text-center bg-dark bg-opacity-75 text-light">Login</h3>
 
 	<div class="card-body">
@@ -17,18 +20,25 @@ $hasErrors = $errors->has("email") || $errors->has("password");
 		{{-- USERNAME --}}
 		<div class="form-group">
 			<label class="form-label">Email:</label>
-			<input id="username" type="email" name="email" class="form-control {{ $hasErrors ? "is-invalid" : "" }}" required>
+			<input id="username" type="email" name="email" class="form-control {{ $hasErrors ? "is-invalid border-danger" : "border-secondary" }}" value="{{ old("email") }}" required>
 		</div>
 
 		{{-- PASSWORD --}}
 		<div class="form-group">
 			<label class="form-label">Password:</label>
-			<input id="password" type="password" name="password" class="form-control mb-2 {{ $hasErrors ? "is-invalid" : "" }}" required>
+			<div class="input-group">
+				<input id="password" type="password" name="password" class="form-control border-end-0 {{ $hasErrors ? "is-invalid border-danger" : "border-secondary" }}"  aria-label="Password" aria-describedby="toggle-show-password" required>
+				
+				<button type="button" class="btn border-start-0 btn-outline-secondary toggle-show-password {{ $hasErrors ? "border-danger" : "border-secondary" }}" id="toggle-show-password" aria-label="Show Password" data-target="#password">
+					<i class="fas fa-eye d-none" id="show"></i>
+					<i class="fas fa-eye-slash" id="hide"></i>
+				</button>
+			</div>
 		</div>
 
 		{{-- FORGOT PASSWORD --}}
 		<div class="form-group">
-			<a href="#" class="link-body-emphasis small">
+			<a href="javascript:SwalFlash.info(`Work In Progress`);" class="link-body-emphasis small">
 				<small class="small">Forgot Password?</small>
 			</a>
 		</div>
@@ -46,4 +56,5 @@ $hasErrors = $errors->has("email") || $errors->has("password");
 	document.querySelectorAll("[data-toRemove]").forEach(el => el.remove());
 </script>
 @endif
+<script type="text/javascript" src="{{ mix("js/login.js") }}"></script>
 @endsection

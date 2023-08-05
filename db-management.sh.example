@@ -1,0 +1,86 @@
+#!/bin/bash
+function goto
+{
+	label=$1
+	cmd=$(sed -n "/$label:/{:a;n;p;ba};" $0 | grep -v ':$')
+	eval "$cmd"
+	exit
+}
+
+callback=${1:-"help"}
+
+goto $callback
+
+help:
+echo ""
+echo "help             Shows the list of sub commands."
+echo "drop             Drops the tables from the cloud database."
+echo "migrate          Migrates the tables to the cloud database."
+echo "backup           Backups the tables from the cloud database."
+echo "migrateBackup    Migrates the backup database to the cloud database."
+goto endFile
+
+mysqlTest:
+{
+	mysql -V &&
+	echo "" &&
+	goto $callback
+} || {
+	echo "Setting MySql..."
+	echo ""
+	# Change Path og MySQL as needed
+	export PATH=$PATH:"C:\wamp64\bin\mysql\mysql5.7.36\bin"
+	goto $callback
+}
+goto endFile
+
+# Change the [SERVER], [USERNAME], [PASSWORD], and [DATABASE-NAME] as the one you're using.
+# Don't forget to add the following lines on .gitignore to prevent your credentials from leaking
+
+# Prevent db-management.sh's SQL files from being uploaded... along with the file itself
+# *.sh
+# *.sql
+
+
+drop:
+callback="dropContinue"
+goto mysqlTest
+dropContinue:
+echo ""
+echo "Dropping..."
+mysql -h [SERVER] -u [USERNAME] -p[PASSWORD] [DATABASE-NAME] < drop.sql
+echo "Done."
+goto endFile
+
+migrate:
+callback="migrateContinue"
+goto mysqlTest
+migrateContinue:
+echo ""
+echo "Migrating..."
+mysql -h [SERVER] -u [USERNAME] -p[PASSWORD] [DATABASE-NAME] < migration.sql
+echo "Done."
+goto endFile
+
+backup:
+callback="backupContinue"
+goto mysqlTest
+backupContinue:
+echo ""
+echo "Doing Backup..."
+mysqldump -h [SERVER] -u [USERNAME] -p[PASSWORD] [DATABASE-NAME] > backup.sql --set-gtid-purged=OFF
+echo "Done."
+goto endFile
+
+migrateBackup:
+callback="migrateBackupContinue"
+goto mysqlTest
+migrateBackupContinue:
+echo ""
+echo "Migrating backup..."
+mysql -h [SERVER] -u [USERNAME] -p[PASSWORD] [DATABASE-NAME] < backup.sql
+echo "Done."
+goto endFile
+
+endFile:
+exit

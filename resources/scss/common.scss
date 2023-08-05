@@ -27,10 +27,10 @@ $overflowDirections: x, y;
 
 		// Backdrops
 		.backdrop#{$infix}-blur {
-			backdrop-filter: blur(8px);
 			-webkit-backdrop-filter: blur(8px);
 			-moz-backdrop-filter: blur(8px);
 			-o-backdrop-filter: blur(8px);
+			backdrop-filter: blur(8px);
 		}
 
 		// Overflows
@@ -84,18 +84,36 @@ body {
 /* BODY BACKGROUND END */
 
 .required {
-	content: "*";
-	color: var(--danger);
-
-	&, &.after {
+	&.before:not(.after)::before {
+		content: "*";
+		color: var(--bs-danger);
 		margin-right: 5px;
 	}
 
-	&.before {
+	&:not(.before)::after,
+	&.after:not(.before)::after {
+		content: "*";
+		color: var(--bs-danger);
 		margin-left: 5px;
 	}
 }
 
 textarea.not-resizable {
 	resize: none!important;
+}
+
+label.form-label .fa-info.info-btn {
+	--common-info-size: .625rem;
+	
+	padding: .125rem;
+	
+	min-width: var(--common-info-size);
+	max-width: var(--common-info-size);
+	min-height: var(--common-info-size);
+	max-height: var(--common-info-size);
+
+	border: solid 1px black !important;
+	border-radius: 50% !important;
+
+	color: black;
 }

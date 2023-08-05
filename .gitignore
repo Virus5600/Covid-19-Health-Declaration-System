@@ -13,3 +13,7 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+
+# Prevent db-management.sh's SQL files from being uploaded... along with the file itself
+*.sh
+*.sql

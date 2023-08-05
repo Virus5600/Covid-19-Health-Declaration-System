@@ -24,7 +24,7 @@ Route::group(["prefix" => "declare"], function() {
 	Route::get("/", "DeclarationController@index")->name("declare");
 
 	// Form Submit
-	Route::post("/submit", "DeclarationController@submit")->name("declare.submit");
+	Route::post("/submit", "DeclarationController@store")->name("declare.submit");
 });
 
 // TRACKER
@@ -39,6 +39,7 @@ Route::get("/tracker", "PageController@tracker")->name("tracker");
 Route::group(["middleware" => ["guest"]], function() {
 	// AUTHENTICATION - LOGIN
 	Route::get("/login", "UserController@login")->name("login");
+	Route::post("/authenticate", "UserController@authenticate")->name("authenticate");
 
 	// AUTHENTICATION - REGISTER
 	Route::group(["prefix" => "register"], function() {
@@ -46,7 +47,7 @@ Route::group(["middleware" => ["guest"]], function() {
 		Route::get("/", "UserController@register")->name("register");
 
 		// Form Submit
-		Route::get("/submit", "UserController@submit")->name("register.submit");
+		Route::get("/submit", "UserController@store")->name("register.submit");
 	});
 });
 
