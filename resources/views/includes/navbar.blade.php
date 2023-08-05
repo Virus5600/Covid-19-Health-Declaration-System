@@ -46,6 +46,15 @@
 				@endif
 			</li>
 
+			{{-- SCHEDULE --}}
+			<li class="nav-item">
+				@if (Request::is('schedule'))
+				<span class="nav-link active">Schedule</span>
+				@else
+				<a href="{{ route('schedule') }}" class="nav-link">Schedule</a>
+				@endif
+			</li>
+
 			<li class="nav-item">
 				<div class="vr h-100 d-none d-lg-block"></div>
 				<hr class="d-block d-lg-none">
@@ -81,7 +90,7 @@
 
 						{{-- USUAL ROUTES --}}
 						<li>
-							<a href="{{ route("schedule") }}" class="dropdown-item">Schedule</a>
+							<a href="{{ route("logout") }}" class="dropdown-item">Logout</a>
 						</li>
 					</ul>
 				</li>
