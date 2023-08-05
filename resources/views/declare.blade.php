@@ -4,7 +4,7 @@
 
 @section('content')
 @php
-$isValidated = session()->has("validated");
+$hasErrors = session()->has("flash_error");
 @endphp
 
 <form action="{{ route("declare.submit") }}" method="POST" class="form card w-100 w-sm-75 w-md-50 mx-auto needs-validation continuous-validation {{ $errors->isNotEmpty() ? "was-validated" : "" }}" enctype="multipart/form-data" novalidate>
@@ -22,7 +22,7 @@ $isValidated = session()->has("validated");
 				<div class="col-12 col-lg-4 col-xl-3 my-2">
 					<div class="form-group">
 						<label for="firstName" class="form-label required before">First Name</label>
-						<input type="text" id="firstName" name="first_name" class="form-control {{ $errors->has("first_name") ? "is-invalid" : ($isValidated ? "is-valid" : "") }}" value="{{ old("first_name") }}" required>
+						<input type="text" id="firstName" name="first_name" class="form-control {{ $errors->has("first_name") ? "is-invalid" : ($hasErrors ? "is-valid" : "") }}" value="{{ old("first_name") }}" required>
 						<span class="invalid-feedback">{{ $errors->first("first_name") }}</span>
 					</div>
 				</div>
@@ -31,7 +31,7 @@ $isValidated = session()->has("validated");
 				<div class="col-12 col-lg-4 col-xl-3 my-2">
 					<div class="form-group">
 						<label for="middleName" class="form-label">Middle Name</label>
-						<input type="text" id="middleName" name="middle_name" class="form-control {{ $errors->has("middle_name") ? "is-invalid" : ($isValidated ? "is-valid" : "") }}" value="{{ old("middle_name") }}">
+						<input type="text" id="middleName" name="middle_name" class="form-control {{ $errors->has("middle_name") ? "is-invalid" : ($hasErrors ? "is-valid" : "") }}" value="{{ old("middle_name") }}">
 						<span class="invalid-feedback">{{ $errors->first("middle_name") }}</span>
 					</div>
 				</div>
@@ -40,7 +40,7 @@ $isValidated = session()->has("validated");
 				<div class="col-12 col-lg-4 col-xl-3 my-2">
 					<div class="form-group">
 						<label for="lastName" class="form-label required before">Last Name</label>
-						<input type="text" id="lastName" name="last_name" class="form-control {{ $errors->has("last_name") ? "is-invalid" : ($isValidated ? "is-valid" : "") }}" value="{{ old("last_name") }}" required>
+						<input type="text" id="lastName" name="last_name" class="form-control {{ $errors->has("last_name") ? "is-invalid" : ($hasErrors ? "is-valid" : "") }}" value="{{ old("last_name") }}" required>
 						<span class="invalid-feedback">{{ $errors->first("last_name") }}</span>
 					</div>
 				</div>
@@ -49,7 +49,7 @@ $isValidated = session()->has("validated");
 				<div class="col-6 col-lg-3 my-2">
 					<div class="form-group">
 						<label for="suffix" class="form-label before">Suffix</label>
-						<input type="text" id="suffix" name="suffix" class="form-control {{ $errors->has("suffix") ? "is-invalid" : ($isValidated ? "is-valid" : "") }}" value="{{ old("suffix") }}">
+						<input type="text" id="suffix" name="suffix" class="form-control {{ $errors->has("suffix") ? "is-invalid" : ($hasErrors ? "is-valid" : "") }}" value="{{ old("suffix") }}">
 						<span class="invalid-feedback">{{ $errors->first("suffix") }}</span>
 					</div>
 				</div>
@@ -58,7 +58,7 @@ $isValidated = session()->has("validated");
 				<div class="col-6 col-lg-3 my-2">
 					<div class="form-group">
 						<label for="age" class="form-label required before">Age</label>
-						<input type="number" id="age" name="age" class="form-control {{ $errors->has("age") ? "is-invalid" : ($isValidated ? "is-valid" : "") }}" value="{{ old("age") }}" min="0" required>
+						<input type="number" id="age" name="age" class="form-control {{ $errors->has("age") ? "is-invalid" : ($hasErrors ? "is-valid" : "") }}" value="{{ old("age") }}" min="0" required>
 						<span class="invalid-feedback">{{ $errors->first("age") }}</span>
 					</div>
 				</div>
@@ -67,7 +67,7 @@ $isValidated = session()->has("validated");
 				<div class="col-12 col-lg-6 my-2">
 					<div class="form-group">
 						<label for="nationality" class="form-label required before">Nationality</label>
-						<input type="text" id="nationatility" name="nationality" class="form-control required before {{ $errors->has("nationality") ? "is-invalid" : ($isValidated ? "is-valid" : "") }}" value="{{ old("nationality") }}" list="nationalityList" required>
+						<input type="text" id="nationatility" name="nationality" class="form-control required before {{ $errors->has("nationality") ? "is-invalid" : ($hasErrors ? "is-valid" : "") }}" value="{{ old("nationality") }}" list="nationalityList" required>
 						<datalist id="nationalityList">
 							<option value="Afghan">
 							<option value="Albanian">
@@ -304,7 +304,7 @@ $isValidated = session()->has("validated");
 				<div class="col-12 col-lg-3 my-2">
 					<div class="form-group">
 						<label class="form-label required before" for="sex">Sex</label>
-						<select name="sex" id="sex" class="form-select {{ $errors->has("sex") ? "is-invalid" : ($isValidated ? "is-valid" : "") }}" required>
+						<select name="sex" id="sex" class="form-select {{ $errors->has("sex") ? "is-invalid" : ($hasErrors ? "is-valid" : "") }}" required>
 							<option value="M" {{ old("sex") == "M" ? "selected" : "" }}>Male</option>
 							<option value="F" {{ old("sex") == "F" ? "selected" : "" }}>Female</option>
 						</select>
@@ -325,7 +325,7 @@ $isValidated = session()->has("validated");
 						<label for="body_temp" class="form-label required before">Body Temperature</label>
 
 						<div class="input-group">
-							<input type="numeric" id="body_temp" name="body_temp" class="form-control {{ $errors->has("body_temp") ? "is-invalid" : ($isValidated ? "is-valid" : "") }}" value="{{ old("body_temp") }}" required>
+							<input type="numeric" id="body_temp" name="body_temp" class="form-control {{ $errors->has("body_temp") ? "is-invalid" : ($hasErrors ? "is-valid" : "") }}" value="{{ old("body_temp") }}" required>
 							<span class="input-group-text">C°</span>
 						</div>
 						<span class="invalid-feedback d-block">{{ $errors->first("body_temp") }}</span>
@@ -342,13 +342,13 @@ $isValidated = session()->has("validated");
 
 						{{-- YES --}}
 						<div class="form-check form-check-inline">
-							<input type="radio" class="form-check-input {{ $errors->has("diagnosed") ? "is-invalid" : ($isValidated ? "is-valid" : "") }}" value="Yes" id="diagnosed_yes" name="diagnosed" {{ old("diagnosed") == "Yes" || old("diagnosed") == null ? "checked" : "" }}>
+							<input type="radio" class="form-check-input {{ $errors->has("diagnosed") ? "is-invalid" : ($hasErrors ? "is-valid" : "") }}" value="Yes" id="diagnosed_yes" name="diagnosed" {{ old("diagnosed") == "Yes" || old("diagnosed") == null ? "checked" : "" }}>
 							<label for="diagnosed_yes" class="form-check-label">Yes</label>
 						</div>
 
 						{{-- NO --}}
 						<div class="form-check form-check-inline">
-							<input type="radio" class="form-check-input {{ $errors->has("diagnosed") ? "is-invalid" : ($isValidated ? "is-valid" : "") }}" value="No" id="diagnosed_no" name="diagnosed" {{ old("diagnosed") == "No" ? "checked" : "" }}>
+							<input type="radio" class="form-check-input {{ $errors->has("diagnosed") ? "is-invalid" : ($hasErrors ? "is-valid" : "") }}" value="No" id="diagnosed_no" name="diagnosed" {{ old("diagnosed") == "No" ? "checked" : "" }}>
 							<label for="diagnosed_no" class="form-check-label">No</label>
 						</div>
 					</div>
@@ -366,13 +366,13 @@ $isValidated = session()->has("validated");
 
 						{{-- YES --}}
 						<div class="form-check form-check-inline">
-							<input type="radio" class="form-check-input {{ $errors->has("encountered") ? "is-invalid" : ($isValidated ? "is-valid" : "") }}" value="Yes" id="encountered_yes" name="encountered" {{ old("encountered") != "No" ? "checked" : "" }}>
+							<input type="radio" class="form-check-input {{ $errors->has("encountered") ? "is-invalid" : ($hasErrors ? "is-valid" : "") }}" value="Yes" id="encountered_yes" name="encountered" {{ old("encountered") != "No" ? "checked" : "" }}>
 							<label for="encountered_yes" class="form-check-label">Yes</label>
 						</div>
 
 						{{-- NO --}}
 						<div class="form-check form-check-inline">
-							<input type="radio" class="form-check-input {{ $errors->has("encountered") ? "is-invalid" : ($isValidated ? "is-valid" : "") }}" value="No" id="encountered_no" name="encountered" {{ old("encountered") == "No" ? "checked" : "" }}>
+							<input type="radio" class="form-check-input {{ $errors->has("encountered") ? "is-invalid" : ($hasErrors ? "is-valid" : "") }}" value="No" id="encountered_no" name="encountered" {{ old("encountered") == "No" ? "checked" : "" }}>
 							<label for="encountered_no" class="form-check-label">No</label>
 						</div>
 					</div>
@@ -390,13 +390,13 @@ $isValidated = session()->has("validated");
 
 						{{-- YES --}}
 						<div class="form-check form-check-inline">
-							<input type="radio" class="form-check-input {{ $errors->has("vaccinated") ? "is-invalid" : ($isValidated ? "is-valid" : "") }}" value="Yes" id="vaccinated_yes" name="vaccinated" {{ old("vaccinated") == "Yes" || old("vaccinated") == null ? "checked" : "" }}>
+							<input type="radio" class="form-check-input {{ $errors->has("vaccinated") ? "is-invalid" : ($hasErrors ? "is-valid" : "") }}" value="Yes" id="vaccinated_yes" name="vaccinated" {{ old("vaccinated") == "Yes" || old("vaccinated") == null ? "checked" : "" }}>
 							<label for="vaccinated_yes" class="form-check-label">Yes</label>
 						</div>
 
 						{{-- NO --}}
 						<div class="form-check form-check-inline">
-							<input type="radio" class="form-check-input {{ $errors->has("vaccinated") ? "is-invalid" : ($isValidated ? "is-valid" : "") }}" value="No" id="vaccinated_no" name="vaccinated" {{ old("vaccinated") == "No" ? "checked" : "" }}>
+							<input type="radio" class="form-check-input {{ $errors->has("vaccinated") ? "is-invalid" : ($hasErrors ? "is-valid" : "") }}" value="No" id="vaccinated_no" name="vaccinated" {{ old("vaccinated") == "No" ? "checked" : "" }}>
 							<label for="vaccinated_no" class="form-check-label">No</label>
 						</div>
 					</div>
@@ -415,7 +415,7 @@ $isValidated = session()->has("validated");
 				<div class="col-12 col-lg-4 my-2">
 					<div class="form-group">
 						<label for="email" class="form-label">Email</label>
-						<input type="email" id="email" name="email" class="form-control {{ $errors->has("email") ? "is-invalid" : ($isValidated ? "is-valid" : "") }}" value="{{ old("email") }}">
+						<input type="email" id="email" name="email" class="form-control {{ $errors->has("email") ? "is-invalid" : ($hasErrors ? "is-valid" : "") }}" value="{{ old("email") }}">
 						<span class="invalid-feedback">{{ $errors->first("email") }}</span>
 					</div>
 				</div>
@@ -424,7 +424,7 @@ $isValidated = session()->has("validated");
 				<div class="col-12 col-lg-4 my-2">
 					<div class="form-group">
 						<label for="mobile_number" class="form-label required before">Mobile Number</label>
-						<input type="text" id="mobile_number" name="mobile_number" class="form-control {{ $errors->has("mobile_number") ? "is-invalid" : ($isValidated ? "is-valid" : "") }}" value="{{ old("mobile_number") }}" required data-mask data-mask-format="+63 999 999 9999">
+						<input type="text" id="mobile_number" name="mobile_number" class="form-control {{ $errors->has("mobile_number") ? "is-invalid" : ($hasErrors ? "is-valid" : "") }}" value="{{ old("mobile_number") }}" required data-mask data-mask-format="+63 999 999 9999">
 						<span class="invalid-feedback">{{ $errors->first("mobile_number") }}</span>
 					</div>
 				</div>
@@ -433,7 +433,7 @@ $isValidated = session()->has("validated");
 				<div class="col-12 col-lg-4 my-2">
 					<div class="form-group">
 						<label for="telephone_number" class="form-label">Telephone Number</label>
-						<input type="text" id="telephone_number" name="telephone_number" class="form-control {{ $errors->has("telephone_number") ? "is-invalid" : ($isValidated ? "is-valid" : "") }}" value="{{ old("telephone_number") }}" data-mask data-mask-format="999[9]-9999">
+						<input type="text" id="telephone_number" name="telephone_number" class="form-control {{ $errors->has("telephone_number") ? "is-invalid" : ($hasErrors ? "is-valid" : "") }}" value="{{ old("telephone_number") }}" data-mask data-mask-format="999[9]-9999">
 						<span class="invalid-feedback">{{ $errors->first("telephone_number") }}</span>
 					</div>
 				</div>

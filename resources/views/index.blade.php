@@ -76,7 +76,7 @@
 				<p>Opt in for email updates and alerts. Schedule consultations with your local hospital.</p>
 
 				@if (Auth::check())
-				<a href="{{ route("login") }}" class="btn btn-primary">Schedule</a>
+				<a href="{{ route("schedule") }}" class="btn btn-primary">Schedule</a>
 				@else
 				<a href="{{ route("login") }}" class="btn btn-primary">Login</a>
 				@endif

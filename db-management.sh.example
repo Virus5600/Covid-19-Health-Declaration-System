@@ -16,6 +16,7 @@ echo ""
 echo "help             Shows the list of sub commands."
 echo "drop             Drops the tables from the cloud database."
 echo "migrate          Migrates the tables to the cloud database."
+echo "refresh          Drops then Migrates the tables to the cloud database."
 echo "backup           Backups the tables from the cloud database."
 echo "migrateBackup    Migrates the backup database to the cloud database."
 goto endFile
@@ -57,6 +58,17 @@ callback="migrateContinue"
 goto mysqlTest
 migrateContinue:
 echo ""
+echo "Migrating..."
+mysql -h [SERVER] -u [USERNAME] -p[PASSWORD] [DATABASE-NAME] < migration.sql
+echo "Done."
+goto endFile
+
+refresh:
+callback="refreshContinue"
+goto mysqlTest
+refreshContinue:
+echo "Dropping..."
+mysql -h [SERVER] -u [USERNAME] -p[PASSWORD] [DATABASE-NAME] < drop.sql
 echo "Migrating..."
 mysql -h [SERVER] -u [USERNAME] -p[PASSWORD] [DATABASE-NAME] < migration.sql
 echo "Done."

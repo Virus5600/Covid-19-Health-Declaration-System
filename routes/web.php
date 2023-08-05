@@ -47,7 +47,7 @@ Route::group(["middleware" => ["guest"]], function() {
 		Route::get("/", "UserController@register")->name("register");
 
 		// Form Submit
-		Route::get("/submit", "UserController@store")->name("register.submit");
+		Route::post("/submit", "UserController@store")->name("register.submit");
 	});
 });
 
@@ -58,6 +58,12 @@ Route::group(["middleware" => ["guest"]], function() {
 //* ----- AUTHENTICATED ----- *//
 
 Route::group(["middleware" => ["auth"]], function() {
+	// GENERAL LOGOUT
+	Route::get("/logout", "UserController@logout")->name("logout");
+
+	// PROFILE
+	Route::get("/profile", "UserController@show")->name("profile");
+
 	// ADMIN SIDE
 	Route::group(["prefix" => "admin", "middleware" => ["userType:admin"]], function() {
 		// Dashboard

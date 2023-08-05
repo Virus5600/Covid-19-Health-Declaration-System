@@ -12,10 +12,10 @@ class UserType
 	 *
 	 * @param  \Illuminate\Http\Request  $request
 	 * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
-	 * @param  string  $userType
+	 * @param  ...string  ...$userType
 	 * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
 	 */
-	public function handle(Request $request, Closure $next, string $userType)
+	public function handle(Request $request, Closure $next, string ...$userType)
 	{
 		if (!auth()->check())
 			return redirect()
@@ -23,8 +23,9 @@ class UserType
 
 		$user = auth()->user();
 
-		if ($user->userType->name == $userType)
-			return $next($request);
+		foreach ($userType as $type)
+			if ($user->userType->name == $type)
+				return $next($request);
 
 		return redirect()
 			->intended();

@@ -17,10 +17,10 @@ $hasErrors = session()->has("flash_error");
 	<div class="card-body">
 		{{ csrf_field() }}
 
-		{{-- USERNAME --}}
+		{{-- EMAIL --}}
 		<div class="form-group">
-			<label class="form-label">Email:</label>
-			<input id="username" type="email" name="email" class="form-control {{ $hasErrors ? "is-invalid border-danger" : "border-secondary" }}" value="{{ old("email") }}" required>
+			<label class="form-label" for="email">Email:</label>
+			<input id="email" type="email" name="email" class="form-control {{ $hasErrors ? "is-invalid border-danger" : "border-secondary" }}" value="{{ old("email") }}" required>
 		</div>
 
 		{{-- PASSWORD --}}

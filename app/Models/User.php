@@ -41,7 +41,7 @@ class User extends Authenticatable
 	];
 
 	// RELATIONSHIPS
-	public function userType() { return $this->belongsTo("App\UserType"); }
+	public function userType() { return $this->belongsTo("App\Models\UserType"); }
 
 	// CUSTOM FUNCTIONS
 	public function getName($include_middle = false): string {

@@ -61,7 +61,7 @@
 					<ul class="dropdown-menu">
 						{{-- PROFILE ROUTES --}}
 						<li>
-							<a href="{{ route("profile") }}" class="nav-link">Profile</a>
+							<a href="{{ route("profile") }}" class="dropdown-item">Profile</a>
 						</li>
 
 						<li>

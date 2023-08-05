@@ -79,7 +79,6 @@ class DeclarationController extends Controller
 			return redirect()
 				->back()
 				->with("flash_error", "Please re-check your answers...")
-				->with("validated", true)
 				->withErrors($validator)
 				->withInput();
 		}

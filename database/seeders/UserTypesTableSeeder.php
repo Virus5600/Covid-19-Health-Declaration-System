@@ -18,7 +18,9 @@ class UserTypesTableSeeder extends Seeder
 		UserType::create([
 			"display_name" => "Admin",
 			"name" => "admin"
-		], [
+		]);
+
+		UserType::create([
 			"display_name" => "User",
 			"name" => "user"
 		]);
