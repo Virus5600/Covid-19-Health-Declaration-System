@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 use App\Models\User;
 
@@ -22,7 +23,8 @@ class UsersTableSeeder extends Seeder
             "last_name" => "Admin",
             "email" => "privatelaravelmailtester@gmail.com",
             "user_type_id" => 1,
-            "password" => Hash::make("password")
+            "password" => Hash::make("password"),
+            "uuid" => Str::orderedUuid()
         ]);
     }
 }

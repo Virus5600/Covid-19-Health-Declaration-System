@@ -24,7 +24,7 @@
 
 				@if (auth()->user()->isType("admin"))
 					{{-- DASHBOARD --}}
-					<a href="{{ route("dashboard") }}" class="link-body-emphasis text-decoration-none my-2" title="Dashboard">Dashboard</a>
+					<a href="{{ route("admin.dashboard") }}" class="link-body-emphasis text-decoration-none my-2" title="Dashboard">Dashboard</a>
 
 					{{-- Horizontal Line --}}
 					<hr>

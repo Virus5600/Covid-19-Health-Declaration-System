@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use App\Models\User;
 use App\Models\UserType;
@@ -181,6 +183,7 @@ class UserController extends Controller {
 
 				// Account Info
 				"user_type_id" => UserType::where("name", "=", "user")->first()->id,
+				"uuid" => Str::orderedUuid()
 			]);
 
 			DB::commit();
@@ -202,5 +205,8 @@ class UserController extends Controller {
 	//* ----- AUTHENTICATION RELATED END ----- *//
 
 	protected function show() {
+		return redirect()
+			->back()
+			->with("flash_info", "Currently work in progress (WIP)");
 	}
 }

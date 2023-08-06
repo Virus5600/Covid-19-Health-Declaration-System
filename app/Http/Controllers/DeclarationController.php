@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 use App\Models\HealthDeclaration;
@@ -122,6 +123,9 @@ class DeclarationController extends Controller
 				"diagnosed" => $req->diagnosed == "Yes" ? true : false,
 				"encountered" => $req->encountered == "Yes" ? true : false,
 				"vaccinated" => $req->vaccinated == "Yes" ? true : false,
+
+				// Meta Data
+				"uuid" => Str::orderedUuid(),
 			]);
 
 			DB::commit();

@@ -1,0 +1,9 @@
+/*!
+ * dist/inputmask
+ * https://github.com/RobinHerbots/Inputmask
+ * Copyright (c) 2010 - 2023 Robin Herbots
+ * Licensed under the MIT license
+ * Version: 5.0.8
+ */
+
+/*! jQuery v3.7.0 | (c) OpenJS Foundation and other contributors | jquery.org/license */

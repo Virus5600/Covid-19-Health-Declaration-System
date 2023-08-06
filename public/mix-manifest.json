@@ -1,11 +1,14 @@
 {
     "/js/general.js": "/js/general.js",
+    "/js/admin/admin.js": "/js/admin/admin.js",
     "/js/modules/inputmask.js": "/js/modules/inputmask.js",
     "/js/modules/animations.js": "/js/modules/animations.js",
     "/js/util/disable-on-submit.js": "/js/util/disable-on-submit.js",
     "/js/login.js": "/js/login.js",
+    "/js/admin/dashboard.js": "/js/admin/dashboard.js",
     "/css/general.css": "/css/general.css",
     "/css/login.css": "/css/login.css",
     "/css/modules/animations.css": "/css/modules/animations.css",
+    "/css/admin/admin.css": "/css/admin/admin.css",
     "/css/common.css": "/css/common.css"
 }

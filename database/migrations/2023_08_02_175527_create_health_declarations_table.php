@@ -35,6 +35,9 @@ class CreateHealthDeclarationsTable extends Migration
 			$table->boolean('encountered');
 			$table->boolean('vaccinated');
 
+			// Meta Data
+			$table->uuid("uuid");
+
 			$table->softDeletes();
 			$table->timestamps();
 		});

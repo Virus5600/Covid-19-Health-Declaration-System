@@ -16,7 +16,7 @@
         "@fortawesome/free-regular-svg-icons": "^6.2.0",
         "@fortawesome/free-solid-svg-icons": "^6.2.0",
         "bootstrap": "^5.2.2",
-        "chart.js": "^4.2.0",
+        "chart.js": "^4.3.2",
         "inputmask": "^5.0.8",
         "jquery": "^3.6.1",
         "jquery-ui": "^1.13.2",

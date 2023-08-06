@@ -20,7 +20,13 @@ $utilities: map-merge(
 			(responsive: true)
 		),
 
-		// RESOIBSIVE BORDERS
+		// RESPONSIVE POSITIONS
+		"position": map-merge(
+			map-get($utilities, "position"),
+			(responsive: true)
+		),
+
+		// RESPONSIVE BORDERS
 		"border": map-merge(
 			map-get($utilities, "border"),
 			(

@@ -69,6 +69,24 @@ Route::group(["middleware" => ["auth"]], function() {
 		// Dashboard
 		Route::get("/", "PageController@redirectDashboard")->name('admin');
 		Route::get("/dashboard", "PageController@dashboard")->name('admin.dashboard');
+
+		// DECLARATION
+		Route::group(["prefix" => "declarations"], function() {
+			// Index
+			Route::get("/", "Admin\DeclarationController@index")->name("admin.declarations.index");
+
+			// Show
+			Route::get("/{uuid}", "Admin\DeclarationController@show")->name("admin.declarations.show");
+		});
+
+		// SCHEDULE
+		Route::group(["prefix" => "schedules"], function() {
+			// Index
+			Route::get("/", "Admin\ScheduleController@index")->name("admin.schedules.index");
+
+			// Show
+			Route::get("/{uuid}", "Admin\ScheduleController@show")->name("admin.schedules.show");
+		});
 	});
 
 	// SCHEDULE (FORM)

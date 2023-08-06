@@ -27,6 +27,9 @@ mix.webpackConfig({
 	.sass('resources/scss/app.scss', 'public/css/general.css')
 	.js('resources/js/app.js', 'public/js/general.js')
 
+	.sass('resources/scss/admin/admin.scss', 'public/css/admin')
+	.js('resources/js/admin/admin.js', 'public/js/admin')
+
 	// Module Assets - JS
 	.js('resources/js/modules/inputmask.js', 'public/js/modules')
 	.js('resources/js/modules/animations.js', 'public/js/modules')
@@ -40,6 +43,8 @@ mix.webpackConfig({
 	// Individual Pages
 	.js('resources/js/login.js', 'public/js')
 	.sass('resources/scss/login.scss', 'public/css')
+
+	.js('resources/js/admin/dashboard.js', 'public/js/admin')
 
 	// Final Configurations
 	.sourceMaps()

@@ -26,6 +26,8 @@ class CreateUsersTable extends Migration
 			$table->ipAddress('locked_by')->nullable();
 			$table->string('password');
 			$table->dateTime('last_auth')->nullable();
+
+			$table->uuid("uuid");
 			
 			$table->rememberToken();
 			$table->softDeletes();

@@ -22,6 +22,7 @@ class User extends Authenticatable
 		'locked_by',
 		'password',
 		'last_auth',
+		'uuid',
 	];
 
 	protected $hidden = [
@@ -49,7 +50,7 @@ class User extends Authenticatable
 	}
 
 	public function isType(string $type): bool {
-		return $this->userType->name == $type;
+		return str_replace(" ", "_", strtolower($this->userType->name)) == str_replace(" ", "_", strtolower($type));
 	}
 
 	// STATIC FUNCTIONS

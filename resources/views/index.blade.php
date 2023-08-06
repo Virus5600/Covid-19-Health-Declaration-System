@@ -78,7 +78,7 @@
 				@if (Auth::check())
 				<a href="{{ route("schedule") }}" class="btn btn-primary">Schedule</a>
 				@else
-				<a href="{{ route("login") }}" class="btn btn-primary">Login</a>
+				<a href="{{ route("schedule") }}" class="btn btn-primary">Login</a>
 				@endif
 			</div>
 		</div>

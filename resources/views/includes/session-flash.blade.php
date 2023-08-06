@@ -50,22 +50,5 @@
 		},
 	});
 	@endif
-
-	$(document).ready(function(){
-		$(document).on('livewire:load', () => {
-			Livewire.onPageExpired((r, m) => {
-				console.info(r);
-				Swal.fire({
-					icon: `info`,
-					title: `The page has expired`,
-					message: m
-				});
-			});
-		});
-
-		$(".col-a").click(function(){
-			$('.collapse.show').collapse('hide');
-		});
-	});
 </script>
 @endif

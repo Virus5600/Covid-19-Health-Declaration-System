@@ -80,7 +80,7 @@
 						{{-- ADMIN ROUTES --}}
 						@if (auth()->user()->isType("admin"))
 						<li>
-							<a href="{{ route("dashboard") }}" class="dropdown-item">Dashboard</a>
+							<a href="{{ route("admin.dashboard") }}" class="dropdown-item">Dashboard</a>
 						</li>
 
 						<li>

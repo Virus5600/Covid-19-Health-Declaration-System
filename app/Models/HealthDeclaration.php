@@ -29,6 +29,9 @@ class HealthDeclaration extends Model
 		'diagnosed',
 		'encountered',
 		'vaccinated',
+
+		// Meta Data
+		'uuid',
 	];
 
 	protected $casts = [
