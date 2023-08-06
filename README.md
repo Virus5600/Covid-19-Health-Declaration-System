@@ -8,7 +8,7 @@ A mini system developed for the DICT Training of Trainers (ToT) - Case Study 2. 
 ## Developers
 
 Karl Satchi Navida [(Virus5600)](https:github.com/Virus5600)
-Aira Medina [(Aira)]()
+Aira Medina [(Aira)](https://github.com/ariasdfg)
 
 ## License
 

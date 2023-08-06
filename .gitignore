@@ -17,3 +17,7 @@ yarn-error.log
 # Prevent db-management.sh's SQL files from being uploaded... along with the file itself
 *.sh
 *.sql
+
+# Prevent some stuff
+*.docx
+README.pdf
