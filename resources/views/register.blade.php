@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@section('title', 'Login')
+@section('title', 'Register')
 
 @section("css")
 <link rel="stylesheet" type="text/css" href="{{ mix("css/login.css") }}">
